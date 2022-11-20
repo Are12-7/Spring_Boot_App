@@ -33,7 +33,7 @@ public class RecipeServices {
         repo.deleteById(id);
     }
 
-    //GET RECIPE BY KEYWORD (INCLUDES MY FAVOURITE RECIPES = TRUE)
+    //GET RECIPE BY KEYWORD (FAVOURITE RECIPE = TRUE)
     public List<Recipe> findByKeyword(String keyword){
         return repo.findByKeyword(keyword);
     }
