@@ -1,8 +1,7 @@
 package ca.georgebrown.assigment2_cyllenian_group.controller;
 
-import ca.georgebrown.assigment2_cyllenian_group.model.Recipe;
+
 import ca.georgebrown.assigment2_cyllenian_group.model.Todo;
-import ca.georgebrown.assigment2_cyllenian_group.services.RecipeServices;
 import ca.georgebrown.assigment2_cyllenian_group.services.TodoServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -31,22 +30,22 @@ public class TodoController {
         return "todo";
     }
 
-    //CREATE RECIPE
-    @RequestMapping("/newtodo")
+    //CREATE MEAL
+    @RequestMapping("/newmeal")
     public String newTodoPage(Model model){
         Todo todo = new Todo();
         model.addAttribute(todo);
         return "new_todo";
     }
 
-    //SAVE RECIPE
+    //SAVE MEAL
     @RequestMapping(value = "/savetodo", method = RequestMethod.POST)
     public String saveTodo(@ModelAttribute("todo") Todo todo){
         todoServices.save(todo);
         return "redirect:/planmeal";
     }
 
-    //EDIT RECIPE
+    //EDIT MEAL
     @RequestMapping("edit/todo-list/{tid}")
     public ModelAndView showEditTodoPage(@PathVariable(name="tid") Long tid){
         ModelAndView mav= new ModelAndView("edit_todo");
@@ -55,7 +54,7 @@ public class TodoController {
         return mav;
     }
 
-    //DELETE RECIPE
+    //DELETE MEAL
     @RequestMapping("delete/todo-list/{tid}")
     public String deleteTodoPage(@PathVariable (name="tid") Long tid) {
         todoServices.delete(tid);

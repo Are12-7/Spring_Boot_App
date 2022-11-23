@@ -31,7 +31,7 @@ public class ShoppingListController {
 
 
     //CREATE List
-    @RequestMapping("/newlist")
+    @RequestMapping("/newitem")
     public String newListPage(Model model){
         ShoppingList shoppingList = new ShoppingList();
         model.addAttribute(shoppingList);
