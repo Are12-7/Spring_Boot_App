@@ -67,5 +67,14 @@ public class RecipeController {
         return "redirect:/recipes";
     }
 
+    //VIEW STEPS
+    @RequestMapping("steps/{rid}")
+    public ModelAndView viewStepsPage(@PathVariable (name="rid") Long rid){
+        ModelAndView mav= new ModelAndView("view_steps");
+        Recipe recipe = service.get(rid);
+        mav.addObject("recipe",recipe);
+        return mav;
+    }
+
 
 }

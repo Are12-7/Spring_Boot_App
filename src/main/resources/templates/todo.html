@@ -77,6 +77,13 @@
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Shopping List</span></a>
     </li>
+
+    <!-- Nav Item - Events -->
+    <li class="nav-item">
+      <a class="nav-link" href="/eventplan">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Events</span></a>
+    </li>
   </ul>
   <!-- End of Sidebar -->
 
@@ -169,8 +176,12 @@
                   <td th:text="${todo.createdDate}">Created Date</td>
                   <td th:text="${todo.modifiedDate}">Modified Date</td>
                   <td>
-                    <a th:href="@{'/edit/todo-list/' + ${todo.tid}}">Edit</a>
-                    <a th:href="@{'/delete/todo-list/' + ${todo.tid}}">Delete</a>
+                    <a class="btn btn-info btn-circle btn-sm" th:href="@{'/edit/todo-list/' + ${todo.tid}}">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="btn btn-danger btn-circle btn-sm" th:href="@{'/delete/todo-list/' + ${todo.tid}}">
+                      <i class="fas fa-trash"></i>
+                    </a>
                   </td>
                 </tr>
                 </tbody>
@@ -208,3 +219,5 @@
 
 </body>
 </html>
+
+

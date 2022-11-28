@@ -15,6 +15,8 @@ public class Recipe {
 
     private boolean favourite;
 
+    private String steps;
+
     public Long getRid() {
         return rid;
     }
@@ -53,5 +55,13 @@ public class Recipe {
 
     public void setFavourite(boolean favourite) {
         this.favourite = favourite;
+    }
+
+    public String getSteps() {
+        return steps;
+    }
+
+    public void setSteps(String steps) {
+        this.steps = steps;
     }
 }

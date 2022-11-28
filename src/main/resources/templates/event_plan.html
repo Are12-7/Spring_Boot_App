@@ -1,3 +1,4 @@
+<!--Users can plan their Meal  -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -8,10 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Recipes</title>
+    <title>Event Plan</title>
 
     <!-- Custom fonts for this template -->
-    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
@@ -95,20 +96,48 @@
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
+                <!-- Sidebar Toggle (Topbar) -->
+                <form class="form-inline">
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </form>
+
+
+
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
+
+                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                    <li class="nav-item dropdown no-arrow d-sm-none">
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                             aria-labelledby="searchDropdown">
+                            <form class="form-inline mr-auto w-100 navbar-search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control bg-light border-0 small"
+                                           placeholder="Search for..." aria-label="Search"
+                                           aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fas fa-search fa-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
 
                     <!-- Nav Item - Shopping Cart -->
                     <li class="nav-item dropdown no-arrow mx-1">
                         <a   href="/shoppingCart" id="messagesDropdown" role="button"
                              aria-haspopup="true" aria-expanded="false">
-                            <img width="42" height="42" style="vertical-align:middle; margin-top: 6px;"  alt="Shopping Cart" title="Shopping List" src="https://play-lh.googleusercontent.com/2QEKcIOLIO9HRoL6lWIVFEY_Y07oW1_5Zk0vvEHym1Wsxzhdjf0mJ6eMG8QBs66c0S8">
+                            <img width="42" height="42" style="vertical-align:middle; margin-top: 6px;"  alt="Shopping Cart" title="Shopping Cart" src="https://play-lh.googleusercontent.com/2QEKcIOLIO9HRoL6lWIVFEY_Y07oW1_5Zk0vvEHym1Wsxzhdjf0mJ6eMG8QBs66c0S8">
 
                         </a>
                     </li>
 
                     <div class="topbar-divider d-none d-sm-block"></div>
-
                     </li>
 
                 </ul>
@@ -120,11 +149,11 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Recipes</h1>
+                <h1 class="h3 mb-2 text-gray-800">Event Plan </h1>
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <a href="/newrecipe">Add New Recipe</a>
+                        <a href="/newevent">Add New Event</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -132,19 +161,30 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Recipe Name</th>
-                                    <th>Recipe Description</th>
-                                    <th>Steps</th>
-                                    <th>Recipe Origin</th>
+                                    <th>Event Name</th>
+                                    <th>Description</th>
+                                    <th>Complete</th>
+                                    <th>Created Date</th>
+                                    <th>Modified Date</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="recipe : ${recipe}">
-                                    <td th:text="${recipe.rid}"> ID</td>
-                                    <td th:text="${recipe.rname}">Recipe Name</td>
-                                    <td th:text="${recipe.rdescription}">Recipe Description</td>
-                                    <td th:text="${recipe.steps}">Steps</td>
-                                    <td th:text="${recipe.rcountry}">Recipe Origin</td>
+                                <tr th:each="event : ${listEvent}">
+                                    <td th:text="${event.eid}"> ID</td>
+                                    <td th:text="${event.ename}">Event Name</td>
+                                    <td th:text="${event.edescription}">Event Description</td>
+                                    <td th:text="${event.complete}">Complete</td>
+                                    <td th:text="${event.createdDate}">Created Date</td>
+                                    <td th:text="${event.modifiedDate}">Modified Date</td>
+                                    <td>
+                                        <a class="btn btn-info btn-circle btn-sm" th:href="@{'/edit/eventplan/' + ${event.eid}}">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger btn-circle btn-sm" th:href="@{'/delete/eventplan/' + ${event.eid}}">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -176,6 +216,7 @@
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
+
 </div>
 
 </body>
