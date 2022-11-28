@@ -1,9 +1,8 @@
 package ca.georgebrown.assigment2_cyllenian_group.controller;
 
 
-import ca.georgebrown.assigment2_cyllenian_group.model.Recipe;
+
 import ca.georgebrown.assigment2_cyllenian_group.model.User;
-import ca.georgebrown.assigment2_cyllenian_group.services.RecipeServices;
 import ca.georgebrown.assigment2_cyllenian_group.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,7 +30,7 @@ public class UserController {
         return "profile";
     }
 
-    //CREATE USER
+    //REGISTER
     @RequestMapping("/register")
     public String registerPage(Model model){
         User user = new User();
@@ -39,23 +38,41 @@ public class UserController {
         return "register";
     }
 
-    //SAVE USER
+    //SAVE NEW USER
     @RequestMapping(value = "/saveuser", method = RequestMethod.POST)
     public String saveUser(@ModelAttribute("user") User user){
         userServices.save(user);
         return "redirect:/login";
     }
 
+    //LOGIN
+    @RequestMapping("/login")
+    public String loginPage(Model model){
+        User user = new User();
+        model.addAttribute(user);
+        return "login";
+    }
+
+
+    //SAVE UPDATED USER
+    @RequestMapping(value = "/updateuser", method = RequestMethod.POST)
+    public String saveUpdatedUser(@ModelAttribute("user") User user){
+        userServices.save(user);
+        return "redirect:/user";
+    }
+
     //EDIT USER
     @RequestMapping("edit/user/{uid}")
     public ModelAndView showEditUserPage(@PathVariable(name="uid") Long uid){
-        ModelAndView mav= new ModelAndView("edit_profile");//EDIT USER
+        ModelAndView mav= new ModelAndView("edit_profile");
         User user = userServices.get(uid);
         mav.addObject("user",user);
         return mav;
     }
 
+
     //DELETE USER
+    //NOT REQUIRED BUT USED FOR TESTING PURPOSES
     @RequestMapping("delete/user/{uid}")
     public String deleteUser(@PathVariable (name="uid") Long uid) {
         userServices.delete(uid);

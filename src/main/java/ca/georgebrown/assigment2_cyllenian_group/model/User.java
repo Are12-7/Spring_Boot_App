@@ -13,20 +13,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uid;
 
-    @NotBlank(message = "Enter your First Name")
+
     private String first_name;
 
-    @NotBlank(message = "Enter your Last Name")
+
     private String last_name;
 
-    @NotBlank(message = "Enter your email")
+
     @Email(message = "Enter a valid email address")
     private String email;
 
-    @NotBlank(message = "Enter your password")
+
     private String password;
 
-    @NotBlank(message = "Re-enter your password")
+
     private String rpassword;
 
     public Long getUid() {
