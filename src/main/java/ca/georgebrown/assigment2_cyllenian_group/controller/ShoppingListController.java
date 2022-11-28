@@ -61,4 +61,13 @@ public class ShoppingListController {
         return "redirect:/shoppinglist";
     }
 
+    //SHOPPING CART
+    @RequestMapping("/shoppingCart")
+    public String viewShoppingCartPage(Model model, String keyword){
+        List<ShoppingList> listShopping = shoppingServices.findByKeyword(keyword);
+        model.addAttribute("listShopping",listShopping);
+        return "my_shopping_cart";
+    }
+
+
 }

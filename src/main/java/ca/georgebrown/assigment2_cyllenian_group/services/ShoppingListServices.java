@@ -33,4 +33,9 @@ public class ShoppingListServices {
     public void delete(Long id){
         shoppingListRepo.deleteById(id);
     }
+
+    //ADD TO CART BY KEYWORD (ADD CART = TRUE)
+    public List<ShoppingList> findByKeyword(String keyword){
+        return shoppingListRepo.findByKeyword(keyword);
+    }
 }

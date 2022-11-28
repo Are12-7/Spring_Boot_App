@@ -3,7 +3,7 @@ package ca.georgebrown.assigment2_cyllenian_group.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "LIST")
+@Table(name = "SHOPPINGLIST")
 public class ShoppingList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,6 +12,8 @@ public class ShoppingList {
     private String lingredients;
     private Integer quantity;
     private boolean purchased;
+
+    private boolean cart;
 
     public Long getLid() {
         return lid;
@@ -51,5 +53,13 @@ public class ShoppingList {
 
     public void setPurchased(boolean purchased) {
         this.purchased = purchased;
+    }
+
+    public boolean isCart() {
+        return cart;
+    }
+
+    public void setCart(boolean addCart) {
+        this.cart = addCart;
     }
 }

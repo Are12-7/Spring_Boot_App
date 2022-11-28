@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>My Favourites</title>
+  <title>Cart</title>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -93,13 +93,12 @@
 
           <!-- Nav Item - Shopping Cart -->
           <li class="nav-item dropdown no-arrow mx-1">
-            <a   href="/shoppingCart" id="messagesDropdown" role="button"
+            <a   href="/my-shopping-cart" id="messagesDropdown" role="button"
                  aria-haspopup="true" aria-expanded="false">
               <img width="42" height="42" style="vertical-align:middle; margin-top: 6px;"  alt="Shopping Cart" title="Shopping List" src="https://play-lh.googleusercontent.com/2QEKcIOLIO9HRoL6lWIVFEY_Y07oW1_5Zk0vvEHym1Wsxzhdjf0mJ6eMG8QBs66c0S8">
 
             </a>
           </li>
-
           <div class="topbar-divider d-none d-sm-block"></div>
           </li>
 
@@ -112,11 +111,11 @@
       <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">My Favourites</h1>
+        <h1 class="h3 mb-2 text-gray-800">MY CART</h1>
 
         <div class="card shadow mb-4">
           <div class="card-header py-3">
-            <a href="/recipes">View all recipes</a>
+            <a href="/shoppinglist">View Shopping List</a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -125,24 +124,17 @@
                 <tr>
                   <th>ID</th>
                   <th>Recipe Name</th>
-                  <th>Recipe Description</th>
-                  <th>Recipe Origin</th>
-                  <th>Favourite</th>
+                  <th>Recipe Ingredients</th>
+                  <th>Quantity</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="recipe : ${listRecipe}">
-                  <td th:text="${recipe.rid}"> ID</td>
-                  <td th:text="${recipe.rname}">Recipe Name</td>
-                  <td th:text="${recipe.rdescription}">Recipe Description</td>
-                  <td th:text="${recipe.rcountry}">Recipe Origin</td>
-                  <td th:text="${recipe.favourite}">Favourite</td>
-
-                  <td>
-                    <a th:href="@{'/edit/' + ${recipe.rid}}">Edit</a>
-                    <a th:href="@{'/delete/' + ${recipe.rid}}">Delete</a>
-                  </td>
+                <tr th:each="shoppingList : ${listShopping}">
+                  <td th:text="${shoppingList.lid}"> ID</td>
+                  <td th:text="${shoppingList.lname}">Recipe Name</td>
+                  <td th:text="${shoppingList.lingredients}">Recipe Ingredient</td>
+                  <td th:text="${shoppingList.quantity}">Quantity</td>
                 </tr>
                 </tbody>
               </table>
@@ -174,6 +166,7 @@
 <a class="scroll-to-top rounded" href="#page-top">
   <i class="fas fa-angle-up"></i>
 </a>
+
 </div>
 
 </body>
