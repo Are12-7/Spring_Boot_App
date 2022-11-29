@@ -147,8 +147,12 @@
                   <td th:text="${recipe.favourite}">Favourite</td>
 
                   <td>
-                    <a th:href="@{'/edit/' + ${recipe.rid}}">Edit</a>
-                    <a th:href="@{'/delete/' + ${recipe.rid}}">Delete</a>
+                    <a class="btn btn-info btn-circle btn-sm"  th:href="@{'/edit/' + ${recipe.rid}}">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="btn btn-danger btn-circle btn-sm"  th:href="@{'/delete/' + ${recipe.rid}}">
+                      <i class="fas fa-trash"></i>
+                    </a>
                   </td>
                 </tr>
                 </tbody>

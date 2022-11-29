@@ -16,7 +16,7 @@ public interface RecipeRepository extends JpaRepository<Recipe,Long> {
     List<Recipe> findByKeyword(@Param("keyword") String keyword);
 
     //SEARCH OPTION
-    @Query(value = "select * from Recipe re where re.rname like %:keywrd% or re.rdescription like %:keywrd% or re.rcountry like %:keywrd% or re.rcountry like %:keywrd% or re.favourite like %:keywrd%",nativeQuery = true)
+    @Query(value = "select * from Recipe re where re.rname like %:keywrd% or re.rdescription like %:keywrd% or re.rcountry like %:keywrd% or re.rcountry like %:keywrd% or re.favourite like %:keywrd% ",nativeQuery = true)
     List<Recipe> searchRecipeBy(@Param("keywrd") String keywrd);
 
 }
