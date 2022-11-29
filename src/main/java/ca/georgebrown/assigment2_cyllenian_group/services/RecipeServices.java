@@ -38,4 +38,10 @@ public class RecipeServices {
         return repo.findByKeyword(keyword);
     }
 
+    //SEARCH OPTION
+    public List<Recipe> searchRecipeBy(String keywrd){
+        return repo.searchRecipeBy(keywrd);
+    }
+
+
 }

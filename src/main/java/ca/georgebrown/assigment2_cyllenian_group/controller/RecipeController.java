@@ -21,10 +21,23 @@ public class RecipeController {
 
 
     //GET ALL RECIPES
+    //SEARCH OPTION KEYWORD
     @RequestMapping("/recipes")
-    public String viewHomePage(Model model){
+    public String viewHomePage(Model model, String keywrd){
+        //IF USER TYPE IN SEARCH BAR
+        //DISPLAY RECIPES BASED ON USER INPUT
+        if(keywrd != null){
+            List<Recipe> listRecipe = service.searchRecipeBy(keywrd);
+            model.addAttribute("listRecipe",listRecipe);
+
+        }
+        //DISPLAY ALL RECIPES
+        else{
             List<Recipe> listRecipe = service.listAll();
             model.addAttribute("listRecipe",listRecipe);
+        }
+
+
         return "recipe";
     }
     //GET MY FAVOURITE RECIPES
@@ -34,6 +47,7 @@ public class RecipeController {
             model.addAttribute("listRecipe",listRecipe);
         return "my_favourite";
     }
+
 
 
     //CREATE RECIPE
