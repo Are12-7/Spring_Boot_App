@@ -15,6 +15,7 @@ public class Recipe {
 
     private boolean favourite;
 
+    @Column(columnDefinition = "TEXT")
     private String steps;
 
     public Long getRid() {
