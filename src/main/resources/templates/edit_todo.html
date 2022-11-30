@@ -1,34 +1,67 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="ISO-8859-1">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
   <title>Edit Plan Meal</title>
+  <link href="css/styles.css" rel="stylesheet" />
+  <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
-<body>
-<div align="center">
-  <h1>Edit to do Recipe</h1>
-  <br />
-  <form action="#" th:action="@{/savetodo}" th:object="${todo}"
-        method="post">
-    <table border="0">
-      <tr>
-        <td>ID</td>
-        <td><input type="text" th:field="*{tid}" readonly="readonly" />
-        </td>
-      </tr>
-      <tr>
-        <td>Recipe Name:</td>
-        <td><input type="text" th:field="*{tname}" /></td>
-      </tr>
-      <tr>
-        <td>Complete</td>
-        <td><input type="checkbox" th:checked="${complete} == true" th:field="*{complete}" id="complete" /></td>
-      </tr>
-      <tr>
-        <td colspan="2"><button type="submit">Update</button></td>
-      </tr>
-    </table>
-  </form>
+<body class="bg-primary">
+<div id="layoutAuthentication">
+  <div id="layoutAuthentication_content">
+    <main>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+              <div class="card-header"><h3 class="text-center font-weight-light my-4">Plan Meal</h3></div>
+              <div class="card-body">
+                <form th:action="@{/savetodo}" th:object="${todo}"
+                      method="post">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3 mb-md-0">
+                        <input class="form-control" id="inputFirstName" type="text" th:field="*{tname}"
+                               placeholder="Recipe name" />
+                        <label for="inputFirstName">Recipe Name</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input class="form-control" id="inputLastName" type="checkbox" value=""
+                               th:checked="${complete} == true" th:field="*{complete}"/>
+                        <label for="inputLastName">Complete</label>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-user btn-block">
+                    Update
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div id="layoutAuthentication_footer">
+    <footer class="py-4 bg-light mt-auto">
+      <div class="container-fluid px-4">
+        <div class="d-flex align-items-center justify-content-between small">
+          <div class="text-muted">Copyright &copy; 2022</div>
+          <div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="js/scripts.js"></script>
 </body>
 </html>

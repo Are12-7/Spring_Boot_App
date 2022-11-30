@@ -1,76 +1,85 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
   <title>Edit Recipe</title>
-
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link
-          href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-          rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+  <link href="css/styles.css" rel="stylesheet" />
+  <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
+<body class="bg-primary">
+<div id="layoutAuthentication">
+  <div id="layoutAuthentication_content">
+    <main>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+              <div class="card-header"><h3 class="text-center font-weight-light my-4">Recipe</h3></div>
+              <div class="card-body">
+                <form th:action="@{/saverecipe}" th:object="${recipe}"
+                      method="post">
+                  <div class="form-floating mb-3">
+                    <input class="form-control" id="inputName" type="text" th:field="*{rname}"
+                           placeholder="Recipe Name" />
+                    <label for="inputName">Recipe Name</label>
+                  </div>
 
-<body class="bg-gradient-primary">
+                  <div class="form-floating mb-3">
+                    <input class="form-control" id="inputDescription" type="text" th:field="*{rdescription}"
+                           placeholder="Recipe Description" />
+                    <label for="inputDescription">Recipe Description</label>
+                  </div>
 
-<div class="container">
 
-  <div class="card o-hidden border-0 shadow-lg my-5">
-    <div class="card-body p-0">
-      <!-- Nested Row within Card Body -->
-      <div class="row">
-        <div class="col-lg-7">
-          <div class="p-5">
-            <div class="text-center">
-              <h1 class="h4 text-gray-900 mb-4">Edit Recipe</h1>
+                  <label>Steps</label>
+                  <div class="form-floating mb-3">
+                    <textarea  type="text" th:field="*{steps}" class="form-control"
+                               id="steps" placeholder="Steps">
+                    </textarea>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input class="form-control" id="inputOrigin" type="text" th:field="*{rcountry}"
+                           placeholder="Country" />
+                    <label for="inputDescription">Recipe Origin</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input class="form-control" id="inputFav" type="checkbox" value=""
+                           th:checked="${favourite} == true" th:field="*{favourite}" />
+                    <label for="inputDescription">Favourite</label>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-user btn-block">
+                    Update
+                  </button>
+                </form>
+              </div>
             </div>
-            <form class="user" action="#" th:action="@{/saverecipe}" th:object="${recipe}"
-                  method="post">
-              <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="text" th:field="*{rid}" readonly="readonly" class="form-control form-control-user" id="exampleFirstName"
-                         placeholder="ID">
-                </div>
-                <div class="col-sm-6">
-                  <input type="text" th:field="*{rname}" class="form-control form-control-user" id="exampleLastName"
-                         placeholder="Recipe Name">
-                </div>
-              </div>
-              <div class="form-group">
-                <input  type="text" th:field="*{rdescription}" class="form-control form-control-user" id="exampleInputEmail"
-                        placeholder="Recipe Description">
-              </div>
-              <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="text" th:field="*{rcountry}" class="form-control form-control-user"
-                         id="exampleInputPassword" placeholder="Recipe Origin">
-                </div>
-                <div class="col-sm-6">
-                  <input type="checkbox" th:checked="${favourite} == true" th:field="*{favourite}" class="form-control form-control-user"
-                         id="exampleRepeatPassword">Favourite
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary btn-user btn-block">
-                Update Recipe
-              </button>
-            </form>
-            <hr>
           </div>
         </div>
       </div>
-    </div>
+    </main>
   </div>
-
+  <div id="layoutAuthentication_footer">
+    <footer class="py-4 bg-light mt-auto">
+      <div class="container-fluid px-4">
+        <div class="d-flex align-items-center justify-content-between small">
+          <div class="text-muted">Copyright &copy; 2022</div>
+          <div>
+            <a href="#">Privacy Policy</a>
+            &middot;
+            <a href="#">Terms &amp; Conditions</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="js/scripts.js"></script>
 </body>
 </html>
