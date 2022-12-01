@@ -22,6 +22,8 @@ public class Todo {
     @NotBlank(message = "Recipe name is required")
     private String tname;
 
+    private String description;
+
     private boolean complete;
 
     @CreatedDate
@@ -37,6 +39,10 @@ public class Todo {
     public void setTid(Long tid) {
         this.tid = tid;
     }
+
+    public String getDescription() { return description;}
+
+    public void setDescription(String description) { this.description = description;}
 
     public String getTname() {
         return tname;

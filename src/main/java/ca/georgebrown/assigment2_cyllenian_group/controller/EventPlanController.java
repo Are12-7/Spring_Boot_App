@@ -1,3 +1,14 @@
+/*
+Project: < Web Application - Cyllenian Group >
+Assignment: < Assignment 2 >
+Author(s): < Author name: Carlos Arellano - Renzzi Adorador - Ronak Gala >
+Student Number: <101339585 - 101277841 - 101300174 >
+Date: 30/11/2022
+Description: This controller allows us to define the routes of the events in our application.
+Routes have been defined for get all events (/eventplan),create event (/newevent),
+save event (/save-event), edit plan (edit/eventplan/{eid}), and delete event (/delete/eventplan/{eid})
+ */
+
 package ca.georgebrown.assigment2_cyllenian_group.controller;
 
 import ca.georgebrown.assigment2_cyllenian_group.model.EventPlan;
@@ -26,15 +37,15 @@ public class EventPlanController {
 
     //GET ALL
     @RequestMapping("/eventplan")
-    public String viewTodoPage(Model model){
+    public String viewTodoPage(Model model) {
         List<EventPlan> listEvent = eventServices.listAll();
-        model.addAttribute("listEvent",listEvent);
+        model.addAttribute("listEvent", listEvent);
         return "event_plan";
     }
 
     //CREATE EVENT
     @RequestMapping("/newevent")
-    public String newEventPage(Model model){
+    public String newEventPage(Model model) {
         EventPlan event = new EventPlan();
         model.addAttribute(event);
         return "new_event";
@@ -42,23 +53,23 @@ public class EventPlanController {
 
     //SAVE EVENT
     @RequestMapping(value = "/save-event", method = RequestMethod.POST)
-    public String saveEvent(@ModelAttribute("event") EventPlan event){
+    public String saveEvent(@ModelAttribute("event") EventPlan event) {
         eventServices.save(event);
         return "redirect:/eventplan";
     }
 
     //EDIT EVENT
     @RequestMapping("edit/eventplan/{eid}")
-    public ModelAndView showEditEventPage(@PathVariable(name="eid") Long eid){
-        ModelAndView mav= new ModelAndView("edit_event");
+    public ModelAndView showEditEventPage(@PathVariable(name = "eid") Long eid) {
+        ModelAndView mav = new ModelAndView("edit_event");
         EventPlan event = eventServices.get(eid);
-        mav.addObject("event",event);
+        mav.addObject("event", event);
         return mav;
     }
 
     //DELETE EVENT
     @RequestMapping("delete/eventplan/{eid}")
-    public String deleteEventPage(@PathVariable (name="eid") Long eid) {
+    public String deleteEventPage(@PathVariable(name = "eid") Long eid) {
         eventServices.delete(eid);
         return "redirect:/eventplan";
     }

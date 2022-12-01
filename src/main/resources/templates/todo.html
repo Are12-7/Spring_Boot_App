@@ -37,7 +37,7 @@
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
       </div>
-      <div class="sidebar-brand-text mx-3">Carlos Arellano</div>
+      <div class="sidebar-brand-text mx-3">Cyllenian</div>
     </a>
 
     <!-- Divider -->
@@ -162,6 +162,7 @@
                 <tr>
                   <th>ID</th>
                   <th>Recipe Name</th>
+                  <th>Recipe Description</th>
                   <th>Complete</th>
                   <th>Created Date</th>
                   <th>Modified Date</th>
@@ -172,6 +173,7 @@
                 <tr th:each="todo : ${listTodo}">
                   <td th:text="${todo.tid}"> ID</td>
                   <td th:text="${todo.tname}">Recipe Name</td>
+                  <td th:text="${todo.description}">Recipe Description</td>
                   <td th:text="${todo.complete}">Complete</td>
                   <td th:text="${todo.createdDate}">Created Date</td>
                   <td th:text="${todo.modifiedDate}">Modified Date</td>

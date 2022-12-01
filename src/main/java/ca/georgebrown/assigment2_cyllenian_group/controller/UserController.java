@@ -1,6 +1,15 @@
+/*
+Project: < Web Application - Cyllenian Group >
+Assignment: < Assignment 2 >
+Author(s): < Author name: Carlos Arellano - Renzzi Adorador - Ronak Gala >
+Student Number: <101339585 - 101277841 - 101300174 >
+Date: 30/11/2022
+Description: This controller allows us to define the routes of users in our application including login and register.
+Routes have been defined for get all user (/user), create new user (/register), login(/login), save user (/saveuser), edit
+user (/edit/user/{uid}), and delete user (/delete/user/{uid})
+*/
+
 package ca.georgebrown.assigment2_cyllenian_group.controller;
-
-
 
 import ca.georgebrown.assigment2_cyllenian_group.model.User;
 import ca.georgebrown.assigment2_cyllenian_group.services.UserServices;
@@ -24,15 +33,15 @@ public class UserController {
 
     //GET USER
     @RequestMapping("/user")
-    public String viewHomePage(Model model){
+    public String viewHomePage(Model model) {
         List<User> listUser = userServices.listAll();
-        model.addAttribute("listUser",listUser);
+        model.addAttribute("listUser", listUser);
         return "profile";
     }
 
     //REGISTER
     @RequestMapping("/register")
-    public String registerPage(Model model){
+    public String registerPage(Model model) {
         User user = new User();
         model.addAttribute(user);
         return "register";
@@ -40,14 +49,14 @@ public class UserController {
 
     //SAVE NEW USER
     @RequestMapping(value = "/saveuser", method = RequestMethod.POST)
-    public String saveUser(@ModelAttribute("user") User user){
+    public String saveUser(@ModelAttribute("user") User user) {
         userServices.save(user);
         return "redirect:/login";
     }
 
     //LOGIN
     @RequestMapping("/login")
-    public String loginPage(Model model){
+    public String loginPage(Model model) {
         User user = new User();
         model.addAttribute(user);
         return "login";
@@ -56,17 +65,17 @@ public class UserController {
 
     //SAVE UPDATED USER
     @RequestMapping(value = "/updateuser", method = RequestMethod.POST)
-    public String saveUpdatedUser(@ModelAttribute("user") User user){
+    public String saveUpdatedUser(@ModelAttribute("user") User user) {
         userServices.save(user);
         return "redirect:/user";
     }
 
     //EDIT USER
     @RequestMapping("edit/user/{uid}")
-    public ModelAndView showEditUserPage(@PathVariable(name="uid") Long uid){
-        ModelAndView mav= new ModelAndView("edit_profile");
+    public ModelAndView showEditUserPage(@PathVariable(name = "uid") Long uid) {
+        ModelAndView mav = new ModelAndView("edit_profile");
         User user = userServices.get(uid);
-        mav.addObject("user",user);
+        mav.addObject("user", user);
         return mav;
     }
 
@@ -74,7 +83,7 @@ public class UserController {
     //DELETE USER
     //NOT REQUIRED BUT USED FOR TESTING PURPOSES
     @RequestMapping("delete/user/{uid}")
-    public String deleteUser(@PathVariable (name="uid") Long uid) {
+    public String deleteUser(@PathVariable(name = "uid") Long uid) {
         userServices.delete(uid);
         return "redirect:/profile";
     }

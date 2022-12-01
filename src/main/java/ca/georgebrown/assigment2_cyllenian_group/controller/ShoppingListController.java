@@ -1,3 +1,19 @@
+/*
+Project: < Web Application - Cyllenian Group >
+Assignment: < Assignment 2 >
+Author(s): < Author name: Carlos Arellano - Renzzi Adorador - Ronak Gala >
+Student Number: <101339585 - 101277841 - 101300174 >
+Date: 30/11/2022
+Description: This controller allows us to define the routes of our shopping list in our application.
+The users can create a new item to their shopping list by filling out the form with the name of the recipe,
+the ingredient they want to add to their list, and the quantity. In addition, the user will have the option
+to update their list and mark the products on their list as "purchased". Finally, the users can add their
+shopping list to the shopping cart.
+Routes have been defined for get all shopping list (/shoppinglist),create item (/newitem),
+save event (/savelist), edit plan (edit/shoppinglist/{lid}), delete event (delete/shoppinglist/{lid})
+shopping cart (shoppingCart)
+*/
+
 package ca.georgebrown.assigment2_cyllenian_group.controller;
 
 import ca.georgebrown.assigment2_cyllenian_group.model.Recipe;
