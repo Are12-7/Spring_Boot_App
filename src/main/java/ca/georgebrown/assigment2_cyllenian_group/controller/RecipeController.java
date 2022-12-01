@@ -74,6 +74,14 @@ public class RecipeController {
         return mav;
     }
 
+    //Update Recipe
+    @RequestMapping(value = "/updateRecipe", method = RequestMethod.POST)
+    public String updateRecipe(@ModelAttribute("recipe") Recipe recipe){
+        service.update(recipe);
+        return "redirect:/recipes";
+    }
+
+
     //DELETE RECIPE
     @RequestMapping("delete/{rid}")
     public String deleteRecipePage(@PathVariable (name="rid") Long rid) {

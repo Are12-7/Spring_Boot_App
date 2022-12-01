@@ -20,7 +20,7 @@
             <div class="card shadow-lg border-0 rounded-lg mt-5">
               <div class="card-header"><h3 class="text-center font-weight-light my-4">Update Recipe</h3></div>
               <div class="card-body">
-                <form th:action="@{/saverecipe}" th:object="${recipe}"
+                <form th:action="@{/updateRecipe}" th:object="${recipe}"
                       method="post">
                   <div class="form-floating mb-3">
                     <input class="form-control" id="inputName" type="text" th:field="*{rname}"
@@ -53,6 +53,7 @@
                            th:checked="${favourite} == true" th:field="*{favourite}" />
                     <label for="inputDescription">Favourite</label>
                   </div>
+                  <input type="hidden" th:field="*{rid}">
                   <button type="submit" class="btn btn-primary btn-user btn-block">
                     Update
                   </button>

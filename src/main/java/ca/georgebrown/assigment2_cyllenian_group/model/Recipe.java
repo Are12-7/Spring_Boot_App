@@ -1,6 +1,7 @@
 package ca.georgebrown.assigment2_cyllenian_group.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "RECIPE")
@@ -8,9 +9,13 @@ public class Recipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long rid;
+    @NotBlank(message="Please input a name.")
     private String rname;
+    @NotBlank(message="Please input a description.")
     private String rdescription;
+    @NotBlank(message="Please input country of origin.")
     private String rcountry;
 
     private boolean favourite;

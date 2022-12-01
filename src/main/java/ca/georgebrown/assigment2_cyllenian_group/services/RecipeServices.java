@@ -5,7 +5,9 @@ import ca.georgebrown.assigment2_cyllenian_group.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RecipeServices {
@@ -21,6 +23,17 @@ public class RecipeServices {
     //SAVE RECIPES
     public void save(Recipe recipe) {
         repo.save(recipe);
+    }
+
+    public Recipe update(Recipe recipe){
+        Optional<Recipe> updateRcp = repo.findById(recipe.getRid());
+        Recipe exists = updateRcp.get();
+        exists.setRname(recipe.getRname());
+        exists.setRdescription(recipe.getRdescription());
+        exists.setRcountry(recipe.getRcountry());
+        exists.setSteps(recipe.getSteps());
+        exists.setFavourite(recipe.isFavourite());
+        return repo.save(exists);
     }
 
     //GET RECIPE BY ID
