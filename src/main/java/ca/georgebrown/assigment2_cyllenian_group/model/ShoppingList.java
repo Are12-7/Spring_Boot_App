@@ -1,3 +1,12 @@
+/*
+Project: < Web Application - Cyllenian Group >
+Assignment: < Assignment 2 >
+Author(s): < Author name: Carlos Arellano - Renzzi Adorador - Ronak Gala >
+Student Number: <101339585 - 101277841 - 101300174 >
+Date: 30/11/2022
+Description: The POJO for the shopping list class. It is used to connect to H2 database for data handling.
+*/
+
 package ca.georgebrown.assigment2_cyllenian_group.model;
 
 import javax.persistence.*;
