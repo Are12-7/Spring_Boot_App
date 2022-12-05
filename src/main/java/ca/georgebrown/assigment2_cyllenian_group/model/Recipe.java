@@ -22,6 +22,7 @@ public class Recipe {
     private Long rid;
     @NotBlank(message="Please input a name.")
     private String rname;
+    @Column(columnDefinition = "TEXT")
     @NotBlank(message="Please input a description.")
     private String rdescription;
     @NotBlank(message="Please input country of origin.")

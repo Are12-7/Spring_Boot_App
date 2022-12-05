@@ -134,6 +134,7 @@
                                     <th>Recipe Ingredients</th>
                                     <th>Steps</th>
                                     <th>Recipe Origin</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -143,6 +144,12 @@
                                     <td th:text="${recipe.rdescription}">Recipe Ingredients</td>
                                     <td th:text="${recipe.steps}">Steps</td>
                                     <td th:text="${recipe.rcountry}">Recipe Origin</td>
+                                    <td>
+                                        <a th:href="@{'/ingredient/' + ${recipe.rid}}">
+                                            <button type="submit" class="btn btn-primary">View Ingredient</button>
+                                        </a>
+                                    </td>
+
                                 </tr>
                                 </tbody>
                             </table>

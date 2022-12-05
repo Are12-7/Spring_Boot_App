@@ -102,5 +102,13 @@ public class RecipeController {
         return mav;
     }
 
+    @RequestMapping("ingredient/{rid}")
+    public ModelAndView viewIngredientPage(@PathVariable(name = "rid") Long rid) {
+        ModelAndView mav = new ModelAndView("view_ingredients");
+        Recipe recipe = service.get(rid);
+        mav.addObject("recipe", recipe);
+        return mav;
+    }
+
 
 }
